@@ -1,5 +1,10 @@
 USE NPPES
-DROP TABLE [dbo].[npidata];
+
+--------------------------------------
+--  npidata
+--------------------------------------
+If OBJECT_ID('npidata', 'U') IS NOT NULL
+   DROP TABLE [npidata]
 GO
 CREATE TABLE [dbo].[npidata] (
 	[NPI] numeric,
@@ -61,7 +66,11 @@ CREATE TABLE [dbo].[npidata] (
 CREATE INDEX npi_idx on [dbo].[npidata] (NPI);
 GO
 
-DROP TABLE [dbo].[npi_taxonomy];
+--------------------------------------
+--  npi_taxonomy
+--------------------------------------
+If OBJECT_ID('npi_taxonomy', 'U') IS NOT NULL
+   DROP TABLE [npi_taxonomy]
 GO
 CREATE TABLE [dbo].[npi_taxonomy] (
 	[NPI] numeric,
@@ -74,7 +83,11 @@ CREATE TABLE [dbo].[npi_taxonomy] (
 CREATE INDEX npi_tax_idx on [dbo].[npi_taxonomy] (NPI);
 GO
 
-DROP TABLE [dbo].[npi_oth_prov];
+--------------------------------------
+--  npi_oth_prov
+--------------------------------------
+If OBJECT_ID('npi_oth_prov', 'U') IS NOT NULL
+   DROP TABLE [npi_oth_prov]
 GO
 CREATE TABLE [dbo].[npi_oth_prov] (
 	[NPI] numeric,
