@@ -4,6 +4,11 @@ import csv, sys
 # The output file does not quote columns and uses the pipe delimiter.
 # Command line as follows:
 # python CleanCSV.py <input file name> <output file name> <col number> <filter value>
+# The purpose of this script is to change the CSV into a pipe-delimited file. The issue is
+# that the data may contain pipe characters and this script does not take that into account.
+# There are also issues with the unknown characters due to an unknown character set provided 
+# in the file.  All character sets were tested and they all threw errors. Instead the open() 
+# command has an ignore errors parameter passed and this works fine.
 
 
 inputfile, outputfile = sys.argv[1], sys.argv[2]
@@ -21,7 +26,18 @@ writecount, readcount, fldnum = 0, 0, 0
 print("Input File :", inputfile)
 print("Output File:", outputfile)
 
-with open(inputfile, mode='r') as csvinfile, \
+#replace pipe characters in source file with spaces since we use pipe as a delimiter
+fin = open(inputfile, 'r', errors='ignore')
+fout = open("temp.csv","wt")
+for line in fin:
+   fout.write(line.replace('|',' '))
+fin.close()
+fout.close()  
+
+inputfile="temp.csv"
+print("Input File :", inputfile)
+
+with open(inputfile, errors="ignore", mode='r') as csvinfile, \
 	 open(outputfile, mode='w', newline='') as csvoutfile:
 	datawriter = csv.writer(csvoutfile, delimiter='|', quoting=csv.QUOTE_NONE, escapechar='\\')
 	datareader = csv.reader(csvinfile)
