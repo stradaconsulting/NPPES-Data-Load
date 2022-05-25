@@ -8,4 +8,4 @@ $user   = $sqlparms['userid']
 $pswd   = $sqlparms['password']
 
 Write-Host "Refactoring npidata..."
-sqlcmd -e -i npidata_refactor.sql -S $server -U $user -P $pswd
+sqlcmd -e -i npidata_refactor.sql -S $server -E #-U $user -P $pswd
