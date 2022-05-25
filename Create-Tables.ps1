@@ -7,12 +7,12 @@ $pswd   = $sqlparms['password']
 $server = $sqlparms['server']
 
 Write-Host "Processing nppes_database.sql"
-sqlcmd -e -i nppes_database.sql -S $server -U $user -P $pswd 
+sqlcmd -e -i nppes_database.sql -S $server -E #-U $user -P $pswd 
 Write-Host "Processing npidata_stage_tbl.sql"
-sqlcmd -e -i npidata_stage_tbl.sql -S $server -U $user -P $pswd 
+sqlcmd -e -i npidata_stage_tbl.sql -S $server -E #-U $user -P $pswd 
 Write-Host "Processing npidata_tbls.sql"
-sqlcmd -e -i npidata_tbls.sql -S $server -U $user -P $pswd 
+sqlcmd -e -i npidata_tbls.sql -S $server -E #-U $user -P $pswd 
 Write-Host "Processing prov_loc_tbl.sql"
-sqlcmd -e -i prov_loc_tbl.sql -S $server -U $user -P $pswd 
+sqlcmd -e -i prov_loc_tbl.sql -S $server -E #-U $user -P $pswd 
 Write-Host "Processing txcodes_tbl.sql"
-sqlcmd -e -i txcodes_tbl.sql -S $server -U $user -P $pswd 
+sqlcmd -e -i txcodes_tbl.sql -S $server -E #-U $user -P $pswd 
