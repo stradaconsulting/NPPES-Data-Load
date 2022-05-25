@@ -95,11 +95,11 @@ select
 	Provider_Business_Practice_Location_Address_Country_Code,
 	Provider_Business_Practice_Location_Address_Telephone_Number,
 	Provider_Business_Practice_Location_Address_Fax_Number,
-	cast(Provider_Enumeration_Date as date),
-	cast(Last_Update_Date as date),
+	try_cast(Provider_Enumeration_Date as date),
+	try_cast(Last_Update_Date as date),
 	NPI_Deactivation_Reason_Code,
-	cast(NPI_Deactivation_Date as date),
-	cast(NPI_Reactivation_Date as date),
+	try_cast(NPI_Deactivation_Date as date),
+	try_cast(NPI_Reactivation_Date as date),
 	Provider_Gender_Code,
 	Authorized_Official_Last_Name,
 	Authorized_Official_First_Name,
@@ -113,7 +113,7 @@ select
 	Authorized_Official_Name_Prefix_Text,
 	Authorized_Official_Name_Suffix_Text,
 	Authorized_Official_Credential_Text,
-	cast(Certification_Date as date)
+	try_cast(Certification_Date as date)
 
 from dbo.npidata_stage;
 GO
