@@ -1,5 +1,10 @@
 USE NPPES
-DROP TABLE [dbo].[npidata_stage];
+
+------------------------------
+--  npidata_Stage
+------------------------------
+If OBJECT_ID('npidata_stage', 'U') IS NOT NULL
+   DROP TABLE [npidata_stage]
 GO
 CREATE TABLE [dbo].[npidata_stage] (
 	[NPI] numeric,
