@@ -1,5 +1,11 @@
 USE NPPES
-DROP TABLE [dbo].[npigeo];
+
+-----------------------------
+--  npigeo
+-----------------------------
+
+If OBJECT_ID('npigeo', 'U') IS NOT NULL
+   DROP TABLE [npigeo]
 GO
 CREATE TABLE [dbo].[npigeo] (
 	[NPI] numeric not null,
