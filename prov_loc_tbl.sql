@@ -1,5 +1,11 @@
 USE NPPES
-CREATE TABLE [dbo].[prov_loc];
+
+----------------------
+--  prov_loc
+----------------------
+
+If OBJECT_ID('prov_loc', 'U') IS NOT NULL
+   DROP TABLE [prov_loc]
 GO
 CREATE TABLE [dbo].[prov_loc] (
 	[NPI] numeric,
