@@ -1,5 +1,10 @@
 USE NPPES
-DROP TABLE [dbo].[txcodes];
+
+---------------------------
+--  txcodes
+---------------------------
+If OBJECT_ID('txcodes', 'U') IS NOT NULL
+   DROP TABLE [txcodes]
 GO
 CREATE TABLE [dbo].txcodes (
 	Code NCHAR(10),
