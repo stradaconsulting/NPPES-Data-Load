@@ -13,7 +13,7 @@
 $txcodesURI = "http://www.nucc.org/images/stories/CSV/nucc_taxonomy_200.csv"
 
 # Step 1 - Download the necessary data
-./Get-NPIData.ps1 "March" "2020" $txcodesURI
+./Get-NPIData.ps1 "May" "2022" $txcodesURI
 
 # Step 2 - Start the SQL Server instance in Docker
 #./Start-SQLServer.ps1
