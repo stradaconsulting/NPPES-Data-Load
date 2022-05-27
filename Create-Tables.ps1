@@ -16,3 +16,7 @@ Write-Host "Processing prov_loc_tbl.sql"
 sqlcmd -e -i prov_loc_tbl.sql -S $server -E #-U $user -P $pswd 
 Write-Host "Processing txcodes_tbl.sql"
 sqlcmd -e -i txcodes_tbl.sql -S $server -E #-U $user -P $pswd 
+Write-Host "Processing npi_endpoint_tbl.sql"
+sqlcmd -e -i npi_endpoint_tbl.sql -S $server -E #-U $user -P $pswd 
+Write-Host "Processing medicare_npi_hcpcs_tbl.sql"
+sqlcmd -e -i medicare_npi_hcpcs_tbl.sql -S $server -E #-U $user -P $pswd 
