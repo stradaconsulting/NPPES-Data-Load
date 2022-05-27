@@ -9,9 +9,21 @@ $nppesMonthlyFileURI  = [URI] ("https://download.cms.gov/nppes/NPPES_Data_Dissem
 $nppesMonthlyFileName = $nppesMonthlyFileURI.LocalPath | Split-Path -Leaf
 $txcodesFileName = ([URI] $txcodesURI).LocalPath | Split-Path -Leaf
 
-Invoke-WebRequest -URI $nppesMonthlyFileURI -Outfile $nppesMonthlyFileName
+# create a .\data folder if it does not yet exist
+$FolderName = ".\data"
+if(Test-Path -Path $FolderName){
+    Write-Host "'.\data' Folder Exists"
+}
+else {
+    Write-Host "'.\data' Folder does not exist. Will be created."
+    New-Item $FolderName -ItemType Directory
+}
 
-Expand-Archive -LiteralPath $nppesMonthlyFileName -DestinationPath . -Force
 
-Invoke-WebRequest -URI $txcodesURI -OutFile $txcodesFileName
+
+Invoke-WebRequest -URI $nppesMonthlyFileURI -Outfile .\data\$nppesMonthlyFileName
+
+Expand-Archive -LiteralPath .\data\$nppesMonthlyFileName -DestinationPath .\data\ -Force
+
+Invoke-WebRequest -URI $txcodesURI -OutFile .\data\$txcodesFileName
 
