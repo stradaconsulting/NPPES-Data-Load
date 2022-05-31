@@ -31,6 +31,10 @@ $npifilename = (Get-ChildItem ./data/npidata_pfile*.csv | Where-Object Name -Not
 $npifilename = (Get-ChildItem ./data/endpoint_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
 ./Process-NPI_endpoint.ps1 $npifilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
 
+# Step 4.3 - Process Medicate data
+$npifilename = (Get-ChildItem ./data/MUP_PHY_*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+./Process-NPI_Medicare.ps1 $npifilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
+
 # Step 5 - Refactor the NPI data
 ./Refactor-NPIData.ps1
 
