@@ -27,14 +27,14 @@ USE NPPES
       [Rndrng_Prvdr_Type]               varchar(55),
       [Rndrng_Prvdr_Mdcr_Prtcptg_Ind]   varchar(1),
       [HCPCS_Cd]                        varchar(5),
-      [HCPCS_Desc]                      varchar(5),
+      [HCPCS_Desc]                      varchar(500),
       [HCPCS_Drug_Ind]                  varchar(1),
       [Place_Of_Srvc]                   varchar(1),
       [Tot_Benes]                       int,
-      [Tot_Srvc]                        int,
+      [Tot_Srvc]                        numeric(30,10),
       [Tot_Bene_Day_Srvcs]              int,
-      [Avg_Sbmtd_Chrg]                  numeric(18,4),
-      [Avg_Mdcr_Alowd_Amt]              numeric(18,4),
-      [Avg_Mdcr_Pymt_Amt]               numeric(18,4),
-      [Avg_Mdcr_Stdzd_Amt]              numeric(18,4)
+      [Avg_Sbmtd_Chrg]                  numeric(30,10),
+      [Avg_Mdcr_Alowd_Amt]              numeric(30,10),
+      [Avg_Mdcr_Pymt_Amt]               numeric(30,10),
+      [Avg_Mdcr_Stdzd_Amt]              numeric(30,10)
    )
