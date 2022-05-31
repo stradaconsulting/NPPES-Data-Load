@@ -12,8 +12,8 @@ $pswd   = $sqlparms['password']
 
 
 # Process the NPI datafile; cleans and filters for the state of California
-python CleanCSV.py $npifilename "tmp_npi.dat" #$filtercol $filterval
+python CleanCSV.py .\data\$npifilename ".\data\tmp_npi.dat" $filtercol $filterval
 
 Write-Host "Loading npidata into SQL Server using bcp..."
-bcp NPPES.dbo.npidata_stage IN tmp_npi.dat -f npi_format.xml -e error.dat -m 10 -S $server -T #-U $user -P $pswd 
+bcp NPPES.dbo.npidata_stage IN .\data\tmp_npi.dat -f npi_format.xml -e error.dat -m 10 -S $server -T #-U $user -P $pswd 
 
