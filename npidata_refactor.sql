@@ -202,3 +202,5 @@ USE NPPES
 UPDATE STATISTICS dbo.npidata;
 UPDATE STATISTICS dbo.npi_taxonomy;
 UPDATE STATISTICS dbo.npi_oth_prov;
+UPDATE STATISTICS dbo.npi_endpoint
+UPDATE STATISTICS dbo.medicare_npi_hcpcs
