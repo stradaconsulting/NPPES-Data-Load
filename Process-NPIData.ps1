@@ -15,5 +15,5 @@ $pswd   = $sqlparms['password']
 python CleanCSV.py .\data\$npifilename ".\data\tmp_npi.dat" $filtercol $filterval
 
 Write-Host "Loading npidata into SQL Server using bcp..."
-bcp NPPES.dbo.npidata_stage IN .\data\tmp_npi.dat -f npi_format.xml -e error.dat -m 10 -S $server -T #-U $user -P $pswd 
+bcp NPPES.dbo.npidata_stage IN .\data\tmp_npi.dat -f npi_format.xml -e error_npi.dat -m 10 -S $server -T #-U $user -P $pswd 
 
