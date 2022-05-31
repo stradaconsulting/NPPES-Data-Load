@@ -22,8 +22,8 @@ $txcodesURI = "http://www.nucc.org/images/stories/CSV/nucc_taxonomy_200.csv"
 ./Create-Tables.ps1
 
 # Step 4 - Filter and load the NPI data
-$npifilename = (Get-ChildItem npidata_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
-./Process-NPIData.ps1 $npifilename 31 "CA"
+$npifilename = (Get-ChildItem ./data/npidata_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+./Process-NPIData.ps1 $npifilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
 
 # Step 5 - Refactor the NPI data
 ./Refactor-NPIData.ps1
