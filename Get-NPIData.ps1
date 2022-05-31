@@ -27,3 +27,6 @@ Expand-Archive -LiteralPath .\data\$nppesMonthlyFileName -DestinationPath .\data
 
 Invoke-WebRequest -URI $txcodesURI -OutFile .\data\$txcodesFileName
 
+Write-Host "***Warning - You must download the Medicare data manually and place it into the .\data subfolder. The URI requires accepting terms and selecting the file"
+Write-Host "Navigate to this location and download the most recent single year:"
+Write-Host "https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider-and-service"
