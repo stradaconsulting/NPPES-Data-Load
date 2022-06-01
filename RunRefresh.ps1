@@ -40,8 +40,8 @@ $txcodesURI = "http://www.nucc.org/images/stories/CSV/nucc_taxonomy_200.csv"
 
 # Step 6 - Load the taxonomy codes
 $txcodesfilename = ([URI] $txcodesURI).LocalPath | Split-Path -Leaf
-./Process-TaxonomyCodes.ps1 $txcodesfilename
+./Process-TaxonomyCodes.ps1 ./data/$txcodesfilename
 
 # Step 7 - Load the Provider Location file
 $plfilename = (Get-ChildItem ./data/pl_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
-./Process-ProvLocData.ps1 $plfilename 4 "CA"
+./Process-ProvLocData.ps1 $plfilename #4 "CA"
