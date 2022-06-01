@@ -21,27 +21,27 @@ $txcodesURI = "http://www.nucc.org/images/stories/CSV/nucc_taxonomy_200.csv"
 # Step 3 - Create the required tables
 ./Create-Tables.ps1
 
-# Step 4 - Filter and load the NPI data
+# Step 4 - Filter and load the NPI and Medicare data
 
-# Step 4.1 - Process NPI Data
-$npifilename = (Get-ChildItem ./data/npidata_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
-./Process-NPIData.ps1 $npifilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
+    # Step 4.1 - Process NPI Data
+    $npifilename = (Get-ChildItem ./data/npidata_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+    ./Process-NPIData.ps1 $npifilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
 
-# Step 4.2 - Process Endpoint data
-$npifilename = (Get-ChildItem ./data/endpoint_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
-./Process-NPI_endpoint.ps1 $npifilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
+    # Step 4.2 - Process Endpoint data
+    $endpointfilename = (Get-ChildItem ./data/endpoint_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+    ./Process-NPI_endpoint.ps1 $endpointfilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
 
-# Step 4.3 - Process Medicate data
-$npifilename = (Get-ChildItem ./data/MUP_PHY_*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
-./Process-NPI_Medicare.ps1 $npifilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
+    # Step 4.3 - Process Medicate data
+    $medicarefilename = (Get-ChildItem ./data/MUP_PHY_*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+    ./Process-Medicare.ps1 $medicarefilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
 
 # Step 5 - Refactor the NPI data
 ./Refactor-NPIData.ps1
 
 # Step 6 - Load the taxonomy codes
-$txcodesFileName = ([URI] $txcodesURI).LocalPath | Split-Path -Leaf
-./Process-TaxonomyCodes.ps1 $txcodesFileName
+$txcodesfilename = ([URI] $txcodesURI).LocalPath | Split-Path -Leaf
+./Process-TaxonomyCodes.ps1 $txcodesfilename
 
 # Step 7 - Load the Provider Location file
-$plfilename = (Get-ChildItem pl_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+$plfilename = (Get-ChildItem ./data/pl_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
 ./Process-ProvLocData.ps1 $plfilename 4 "CA"
