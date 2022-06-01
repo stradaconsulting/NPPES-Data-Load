@@ -1,22 +1,24 @@
 #Requires -Version 7.0
 # Creates the NPPES tables
 # CAUTION!!! - DROPS ALL THE EXISTING TABLES USED BY THIS DATA LOAD
+# Uses the named database name in the passwords.json file
 $sqlparms = ./Get-SQLCredential.ps1
-$user   = $sqlparms['userid']
-$pswd   = $sqlparms['password']
-$server = $sqlparms['server']
+$user     = $sqlparms['userid']
+$pswd     = $sqlparms['password']
+$server   = $sqlparms['server']
+$database = $sqlparms['database']
 
-Write-Host "Processing nppes_database.sql"
-sqlcmd -e -i nppes_database.sql -S $server -E #-U $user -P $pswd 
+Write-Host "Processing medical_data_database.sql"
+sqlcmd -e -i medical_data_database.sql -S $server -d $database -U $user -P $pswd #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing npidata_stage_tbl.sql"
-sqlcmd -e -i npidata_stage_tbl.sql -S $server -E #-U $user -P $pswd 
+sqlcmd -e -i npidata_stage_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing npidata_tbls.sql"
-sqlcmd -e -i npidata_tbls.sql -S $server -E #-U $user -P $pswd 
+sqlcmd -e -i npidata_tbls.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing prov_loc_tbl.sql"
-sqlcmd -e -i prov_loc_tbl.sql -S $server -E #-U $user -P $pswd 
+sqlcmd -e -i prov_loc_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing txcodes_tbl.sql"
-sqlcmd -e -i txcodes_tbl.sql -S $server -E #-U $user -P $pswd 
+sqlcmd -e -i txcodes_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing npi_endpoint_tbl.sql"
-sqlcmd -e -i npi_endpoint_tbl.sql -S $server -E #-U $user -P $pswd 
+sqlcmd -e -i npi_endpoint_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing medicare_npi_hcpcs_tbl.sql"
-sqlcmd -e -i medicare_npi_hcpcs_tbl.sql -S $server -E #-U $user -P $pswd 
+sqlcmd -e -i medicare_npi_hcpcs_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
