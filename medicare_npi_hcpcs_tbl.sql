@@ -1,5 +1,3 @@
-USE NPPES
-
 -- Create Medicare data for most recent year available by NPI and HCPCS code
 
 

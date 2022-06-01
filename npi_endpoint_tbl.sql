@@ -1,5 +1,3 @@
-USE NPPES
-
 -- Create NPI Endpoint table
 
 
