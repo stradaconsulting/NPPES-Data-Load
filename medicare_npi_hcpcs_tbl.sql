@@ -38,3 +38,10 @@ USE NPPES
       [Avg_Mdcr_Pymt_Amt]               numeric(30,10),
       [Avg_Mdcr_Stdzd_Amt]              numeric(30,10)
    )
+   GO
+
+   CREATE INDEX medicare_npi_idx on [dbo].[medicare_npi_hcpcs] (Rndrng_NPI);
+   GO   
+
+   CREATE INDEX medicare_hcpcs_idx on [dbo].[medicare_npi_hcpcs] (HCPCS_Cd);
+   GO   
