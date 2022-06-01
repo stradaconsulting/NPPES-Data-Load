@@ -8,6 +8,7 @@ $userss = ConvertTo-SecureString $pwdfile.sqlserver.userid
 $user = ConvertFrom-SecureString -SecureString $userss -AsPlainText
 $pwd = ConvertFrom-SecureString -SecureString $pwdss -AsPlainText
 $server = $pwdfile.sqlserver.server
+$database = $pwdfile.sqlserver.database
 
-$sqlparms = @{ "server"=$server; "userid"=$user; "password" = $pwd } 
+$sqlparms = @{ "server"=$server; "database"=$database; "userid"=$user; "password" = $pwd } 
 return $sqlparms

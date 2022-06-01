@@ -4,6 +4,7 @@
 # operations that require them.
 
 $server = Read-Host -Prompt 'Enter the server name for your SQL Server:' 
+$database = Read-Host -Prompt 'Enter the database to use within the server connection:'
 $user = Read-Host -Prompt 'Enter your SQL Server User ID:' -AsSecureString
 $pwd = Read-Host -Prompt 'Enter your SQL Server Password:' -AsSecureString
 
@@ -16,6 +17,7 @@ $pwdfile = @"
 {
 	"sqlserver": {
 			"server": "$server",
+			"database: "$database",
 			"userid": "$userencr",
 			"password": "$pwdencr"
 		     }
