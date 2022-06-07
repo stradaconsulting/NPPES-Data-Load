@@ -6,9 +6,10 @@ Param ( [Parameter(Mandatory=$True)] [ValidateNotNull()] [string] $inputfile)
 
 # Get SQL credentials
 $sqlparms = ./Get-SQLCredential.ps1
-$server = $sqlparms['server']
-$user   = $sqlparms['userid']
-$pswd   = $sqlparms['password']
+$server   = $sqlparms['server']
+$database = $sqlparms['database']
+$user     = $sqlparms['userid']
+$pswd     = $sqlparms['password']
 
 
 #################
