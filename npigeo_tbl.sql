@@ -14,6 +14,9 @@ CREATE TABLE [dbo].[npigeo] (
 );
 GO
 
+CREATE INDEX medicare_npi_idx on [dbo].[medicare_npi_hcpcs] (Rndrng_NPI);
+GO
+
 
 
 -----------------------------
