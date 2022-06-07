@@ -13,4 +13,4 @@ $pswd     = $sqlparms['password']
 
 
 #################
-python Load-Geocodes.py $inputfile $user $pswd $server
+python Load-Geocodes.py $inputfile $user $pswd $server $database
