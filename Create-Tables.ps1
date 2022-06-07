@@ -22,3 +22,5 @@ Write-Host "Processing npi_endpoint_tbl.sql"
 sqlcmd -e -i npi_endpoint_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing medicare_npi_hcpcs_tbl.sql"
 sqlcmd -e -i medicare_npi_hcpcs_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
+Write-Host "Processing npigeo_tbl.sql"
+sqlcmd -e -i npigeo_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
