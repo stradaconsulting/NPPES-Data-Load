@@ -3,9 +3,10 @@
 
 # Get SQL credentials
 $sqlparms = ./Get-SQLCredential.ps1
-$server = $sqlparms['server']
-$user   = $sqlparms['userid']
-$pswd   = $sqlparms['password']
+$server   = $sqlparms['server']
+$database = $sqlparms['database']
+$user     = $sqlparms['userid']
+$pswd     = $sqlparms['password']
 
 Write-Host "Refactoring npidata..."
-sqlcmd -e -i npidata_refactor.sql -S $server -E #-U $user -P $pswd
+sqlcmd -e -i npidata_refactor.sql -S $server -d $database -U $user -P $pswd #-E use either -E or -U & -P depending on connection type
