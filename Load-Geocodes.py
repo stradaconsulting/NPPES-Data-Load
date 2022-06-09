@@ -1,3 +1,6 @@
+# DEPRECATED as new process for loading NPI address data converted to latitude/longitude is now
+# loaded into the database using Process_npigeo_USCensusData
+
 import pyodbc, csv, sys
 
 # Loads the geocode latitude/longitude to the NPPES database for
