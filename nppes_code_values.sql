@@ -1,5 +1,3 @@
-USE NPPES
-
 -- NPPES Code Table Values as per the NPPES_Data_Dissemination_CodeValues.pdf document
 -- Includes table creation, indexes, Foreign Key and data population scripts
 -- It should be noted that not everything may have a Foreign Key.  The State table in particular contains
