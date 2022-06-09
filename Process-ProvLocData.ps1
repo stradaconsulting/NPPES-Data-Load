@@ -7,12 +7,13 @@ Param ( [Parameter(Mandatory=$True)] [ValidateNotNull()] [string] $plfilename, `
 
 # Get SQL credentials
 $sqlparms = ./Get-SQLCredential.ps1
-$server = $sqlparms['server']
-$user   = $sqlparms['userid']
-$pswd   = $sqlparms['password']
+$server   = $sqlparms['server']
+$database = $sqlparms['database']
+$user     = $sqlparms['userid']
+$pswd     = $sqlparms['password']
 
 python CleanCSV.py .\data\$plfilename ".\data\tmp_pl.dat" $filtercol $filterval 
 
 Write-Host "Loading Provider Location data into SQL Server using bcp..."
-bcp NPPES.dbo.prov_loc IN .\data\tmp_pl.dat -f prov_loc_format.xml -e error_provloc.dat -m 10 -S $server -T #-U $user -P $pswd 
+bcp dbo.prov_loc IN .\data\tmp_pl.dat -f prov_loc_format.xml -e error_provloc.dat -m 10 -S $server -d $database -U $user -P $pswd #-T Either use -T or -U & -P depending on connection type
 
