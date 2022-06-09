@@ -1,6 +1,5 @@
 -- Load the npidata table from the staging table
 -- Does not include the Taxonomy and Other Provider entities
-USE NPPES
 Insert into dbo.npidata (	
     NPI,
     Entity_Type_Code,
@@ -161,7 +160,6 @@ GO
 -- Denormalize the Other Provider information
 --
 --
-USE NPPES
 DECLARE @template2 nvarchar(max);
 DECLARE @sql2 nvarchar(max);
 
@@ -198,7 +196,6 @@ END
 GO
 
 -- Update Statistics on the tables loaded
-USE NPPES
 UPDATE STATISTICS dbo.npidata;
 UPDATE STATISTICS dbo.npi_taxonomy;
 UPDATE STATISTICS dbo.npi_oth_prov;
