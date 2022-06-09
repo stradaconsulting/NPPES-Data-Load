@@ -10,15 +10,16 @@ Param ( [Parameter(Mandatory=$True)] [ValidateNotNull()] [string] $npifilename, 
 
 # Get SQL credentials
 $sqlparms = ./Get-SQLCredential.ps1
-$server = $sqlparms['server']
-$user   = $sqlparms['userid']
-$pswd   = $sqlparms['password']
+$server   = $sqlparms['server']
+$database = $sqlparms['database']
+$user     = $sqlparms['userid']
+$pswd     = $sqlparms['password']
 
 
-# Process the NPI datafile; cleans and filters for the state of California
+# Process the Medicare datafile; optional filter may be applied
 python CleanCSV.py .\data\$npifilename ".\data\tmp_medicare.dat" $filtercol $filterval
 
-Write-Host "Loading npidata into SQL Server using bcp..."
-bcp NPPES.dbo.medicare_npi_hcpcs IN .\data\tmp_medicare.dat -f medicare_npi_hcpcs_format.xml -e error_medicare.dat -m 10 -S $server -T #-U $user -P $pswd 
+Write-Host "Loading Medicare data into SQL Server using bcp..."
+bcp dbo.medicare_npi_hcpcs IN .\data\tmp_medicare.dat -f medicare_npi_hcpcs_format.xml -e error_medicare.dat -m 10 -S $server -d $database -U $user -P $pswd #-T Either use -T or -U & -P depending on connection type
 
 
