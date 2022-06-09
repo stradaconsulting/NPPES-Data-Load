@@ -16,9 +16,9 @@ $user     = $sqlparms['userid']
 $pswd     = $sqlparms['password']
 
 
-# Process the NPI datafile; cleans and filters for the state of California
+# Process the NPI Endpoint datafile; cleans and filters for the state of California
 python CleanCSV.py .\data\$npifilename ".\data\tmp_endpoint.dat" $filtercol $filterval
 
-Write-Host "Loading npidata into SQL Server using bcp..."
+Write-Host "Loading npidata endpoint into SQL Server using bcp..."
 bcp dbo.npi_endpoint IN .\data\tmp_endpoint.dat -f npi_endpoint_format.xml -e error_endpoint.dat -m 10 -S $server -d $database -U $user -P $pswd #-T Either use -T or -U & -P depending on connection type
 
