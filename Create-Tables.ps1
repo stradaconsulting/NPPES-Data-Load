@@ -24,3 +24,9 @@ Write-Host "Processing medicare_npi_hcpcs_tbl.sql"
 sqlcmd -e -i medicare_npi_hcpcs_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 Write-Host "Processing npigeo_tbl.sql"
 sqlcmd -e -i npigeo_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
+Write-Host "Processing npigeo_tbl.sql"
+sqlcmd -e -i npigeo_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
+Write-Host "medicare_npi_latitude_longitude_view.sql"
+sqlcmd -e -i medicare_npi_latitude_longitude_view.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
+Write-Host "medicare_npi_specialization_hcpcs_view.sql"
+sqlcmd -e -i medicare_npi_specialization_hcpcs_view.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
