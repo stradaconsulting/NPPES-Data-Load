@@ -5,6 +5,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+If OBJECT_ID('medicare_npi_latitude_longitude', 'V') IS NOT NULL
+   DROP VIEW [medicare_npi_latitude_longitude]
+GO
+
 CREATE VIEW [dbo].[medicare_npi_latitude_longitude] AS
    SELECT NPI                      npi
         , Latitude                 latitude
