@@ -44,5 +44,8 @@ sqlcmd -e -i medicare_npi_latitude_longitude_view.sql -S $server -d $database -U
 Write-Host "medicare_npi_specialization_hcpcs_view.sql"
 sqlcmd -e -i medicare_npi_specialization_hcpcs_view.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
 
-Write-Host "medicare_referring_npi_hcpcs_tbl.sql"
-sqlcmd -e -i medicare_referring_npi_hcpcs_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
+Write-Host "medicare_npi_hcpcs_dme_tbl.sql"
+sqlcmd -e -i medicare_npi_hcpcs_dme_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
+
+Write-Host "medicare_npi_hcpcs_geography_tbl.sql"
+sqlcmd -e -i medicare_npi_hcpcs_geography_tbl.sql -S $server -d $database -U $user -P $pswd  #-E #use either -E or -U & -P depending on connection type
