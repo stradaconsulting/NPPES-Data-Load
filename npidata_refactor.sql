@@ -199,5 +199,7 @@ GO
 UPDATE STATISTICS dbo.npidata;
 UPDATE STATISTICS dbo.npi_taxonomy;
 UPDATE STATISTICS dbo.npi_oth_prov;
-UPDATE STATISTICS dbo.npi_endpoint
-UPDATE STATISTICS dbo.medicare_npi_hcpcs
+UPDATE STATISTICS dbo.npi_endpoint;
+UPDATE STATISTICS dbo.medicare_npi_hcpcs;
+UPDATE STATISTICS dbo.medicare_npi_hcpcs_dme;
+UPDATE STATISTICS dbo.medicare_npi_hcpcs_geography;
