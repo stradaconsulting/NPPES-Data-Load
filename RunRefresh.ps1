@@ -31,9 +31,18 @@ $txcodesURI = "http://www.nucc.org/images/stories/CSV/nucc_taxonomy_200.csv"
     $endpointfilename = (Get-ChildItem ./data/endpoint_pfile*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
     ./Process-NPI_endpoint.ps1 $endpointfilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
 
-    # Step 4.3 - Process Medicate data
+    # Step 4.3 - Process Medicare data
     $medicarefilename = (Get-ChildItem ./data/MUP_PHY_*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
     ./Process-Medicare.ps1 $medicarefilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
+
+    # Step 4.4 - Process Medicare Referring NPI DME data
+    $medicareDMEfilename = (Get-ChildItem ./data/Medicare_Durable_Medical_Equipment_Devices_Supplies_by_Provider_and_Service_Data_*.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+    ./Process-MedicareDME.ps1 $medicareDMEfilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
+
+    # Step 4.5 - Process Medicare Physicician and Practitioner by Geography and Service data
+    # the ?? wildcard represents the year
+    $medicareGeographyfilename = (Get-ChildItem ./data/MUP_PHY_R21_P04_V10_D??_Geo.csv | Where-Object Name -NotLike "*FileHeader.csv").Name
+    ./Process-MedicareGeography.ps1 $medicareGeographyfilename #31 "CA"  #we do not wish to filter for anything so we ignore the last two parameters
 
 # Step 5 - Refactor the NPI data
 ./Refactor-NPIData.ps1
