@@ -61,8 +61,6 @@ with open(intermediatefile, errors="ignore", mode='r') as csvinfile, \
       readcount += 1
       if readcount == 1: # skip the header record
          continue
-      elif readcount % 100000 == 0:
-         print("Records read:   ", readcount, "\nRecords written:", writecount)
       elif filter: 
          if (row[filtercol] == filterval):
             datawriter.writerow(row)
@@ -70,5 +68,6 @@ with open(intermediatefile, errors="ignore", mode='r') as csvinfile, \
       else:
          datawriter.writerow(row)
          writecount += 1
-
+      if readcount % 100000 == 0:
+         print("Records read:   ", readcount, "\nRecords written:", writecount)
 print("Records read:   ", readcount, "\nRecords written:", writecount)
